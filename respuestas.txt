@@ -1,0 +1,30 @@
+Este comando vuelve a cambiar el directorio de trabajo a la rama.main
+
+Respuesta:
+
+● ¿Puede ver el archivo tp2_1_2.c? ¿Por qué?
+
+Sí, usted debería poder ver el archivo tp2_1_2.c en la carpeta donde inicializó el repositorio.
+
+¿Por qué?
+
+git checkout main solo cambia la rama activa en tu directorio de trabajo. No elimina ni modifica de forma inherente los archivos que estaban presentes en el historial del repositorio.
+Cuando agregaste y confirmaste inicialmente (probablemente en la rama o en una rama que luego se fusionó con ), Git registró una instantánea de ese archivo en el historial del repositorio asociado con la 
+rama.tp2_1_2.c  (main)
+
+Aunque haya realizado una confirmación en la rama, la rama todavía tiene su propio registro histórico de (en el estado en el que se encontraba en el momento de la última confirmación en ).opcion_2maintp2_1_2.cmain
+Al desproteger , Git trae los archivos asociados con la última confirmación en la rama a su directorio de trabajo. Ya que fue parte de la historia de , estará presente.mainmaintp2_1_2.cmain
+Nota importante: Si había eliminado en la rama y había confirmado esa eliminación solo en (y no fusionó esa eliminación en ), entonces cuando volviera a cambiar a , el archivo volvería a aparecer tal como existe en el historial de la rama.tp2_1_2.copcion_2 (main)
+
+● En el VSCode vaya al “Source Control” para ver una representación gráfica del historial de versiones del repositorio.
+
+Abra VSCode: Asegúrese de que la carpeta que contiene el repositorio de Git () esté abierta en VSCode.mi_repo
+Vaya a "Control de código fuente": En la barra lateral izquierda de VSCode, verá un icono que parece líneas ramificadas (normalmente el tercer icono desde la parte superior). Haga clic en este icono para abrir la vista "Control de código fuente".
+Ver el historial: En la vista "Control de código fuente", debería ver una sección etiquetada como "HISTORIAL" o algo similar. Al hacer clic en esta sección (o puede que se muestre de forma predeterminada) se mostrará una representación gráfica del historial de confirmaciones de tu repositorio.
+Lo que deberías ver en el historial gráfico:
+
+Es probable que veas la rama y la rama como líneas separadas de confirmaciones(main )opcion_2
+La confirmación que hayas realizado en la rama se mostrará como parte del historial de la rama.opcion_2opcion_2
+El punto desde el que se bifurcó para crear será claramente visible.mainopcion_2
+Por lo general, se resaltará la rama actualmente activa ().main
+Esta representación gráfica te ayuda a visualizar la bifurcación y fusión de tu código a lo largo del tiempo, lo que facilita la comprensión de las diferentes versiones y el flujo de cambios en tu proyecto.
