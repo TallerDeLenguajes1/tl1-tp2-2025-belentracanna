@@ -28,3 +28,15 @@ La confirmación que hayas realizado en la rama se mostrará como parte del hist
 El punto desde el que se bifurcó para crear será claramente visible.mainopcion_2
 Por lo general, se resaltará la rama actualmente activa ().main
 Esta representación gráfica te ayuda a visualizar la bifurcación y fusión de tu código a lo largo del tiempo, lo que facilita la comprensión de las diferentes versiones y el flujo de cambios en tu proyecto.
+
+-------------------------------------------------------------------------------------------------------------
+
+Al ejecutar el comando 'git merge Opcion_2 -m "merge Opcion_2"', se combinaron los cambios de la rama Opcion_2 con la rama main.
+
+En VSCode, en la sección de "Source Control", se puede observar que:
+- Los cambios realizados en la rama Opcion_2 ahora están presentes en la rama main.
+- Es posible que se haya creado un "merge commit" para registrar la combinación de las historias de ambas ramas.
+- Los archivos que fueron modificados en ambas ramas (sin conflictos) aparecen como cambios en la rama main.
+
+----------------------------------------------------------------------------------------------------------
+
