@@ -13,11 +13,9 @@ struct compu {
     int cantidad_nucleos;   // Cantidad de núcleos (valor entre 1 y 8)
     char *tipo_cpu;         // Tipo de procesador (apuntador a cadena de caracteres)
 };
+int generar_aleatorio(int min, int max) ;
 
-// Función para generar un entero aleatorio dentro de un rango
-int generar_aleatorio(int min, int max) {
-    return min + rand() % (max - min + 1);
-}
+void listarPCs(struct compu pcs[], int cantidad) ;
 
 int main() {
     srand(time(NULL)); // Inicializar la semilla para números aleatorios
@@ -36,11 +34,30 @@ int main() {
 
         // Asignar un tipo de CPU aleatorio
         int indice_aleatorio = rand() % 6;
-        pcs[i].tipo_cpu = tipos[indice_aleatorio]; // El puntero apunta a la cadena en el arreglo tipos
+        pcs[i].tipo_cpu = tipos[indice_aleatorio];
     }
 
-    // Aquí se podrían añadir las llamadas a las funciones para mostrar
-    // la información y encontrar características específicas.
+    // Mostrar la lista de PCs
+    listarPCs(pcs, CANTIDAD_PCS);
 
     return 0;
+}
+
+// Función para generar un entero aleatorio dentro de un rango
+int generar_aleatorio(int min, int max) {
+    
+    return min + rand() % (max - min + 1);
+}
+
+// Función para listar las PCs
+void listarPCs(struct compu pcs[], int cantidad) {
+    printf("--- Lista de Computadoras ---\n");
+    for (int i = 0; i < cantidad; i++) {
+        printf("PC %d:\n", i + 1);
+        printf("  Velocidad: %d GHz\n", pcs[i].velocidad);
+        printf("  Año: %d\n", pcs[i].anio);
+        printf("  Cantidad de núcleos: %d\n", pcs[i].cantidad_nucleos);
+        printf("  Tipo de CPU: %s\n", pcs[i].tipo_cpu);
+        printf("-------------------------\n");
+    }
 }
