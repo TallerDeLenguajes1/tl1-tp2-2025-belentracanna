@@ -13,9 +13,46 @@ struct compu {
     int cantidad_nucleos;   // Cantidad de núcleos (valor entre 1 y 8)
     char *tipo_cpu;         // Tipo de procesador (apuntador a cadena de caracteres)
 };
-int generar_aleatorio(int min, int max) ;
 
-void listarPCs(struct compu pcs[], int cantidad) ;
+// Función para generar un entero aleatorio dentro de un rango
+int generar_aleatorio(int min, int max) {
+    return min + rand() % (max - min + 1);
+}
+
+// Función para listar las PCs
+void listarPCs(struct compu pcs[], int cantidad) {
+    printf("--- Lista de Computadoras ---\n");
+    for (int i = 0; i < cantidad; i++) {
+        printf("PC %d:\n", i + 1);
+        printf("  Velocidad: %d GHz\n", pcs[i].velocidad);
+        printf("  Año: %d\n", pcs[i].anio);
+        printf("  Cantidad de núcleos: %d\n", pcs[i].cantidad_nucleos);
+        printf("  Tipo de CPU: %s\n", pcs[i].tipo_cpu);
+        printf("-------------------------\n");
+    }
+}
+
+// Función para mostrar la PC más vieja
+void mostrarMasVieja(struct compu pcs[], int cantidad) {
+    if (cantidad == 0) {
+        printf("No hay computadoras en la lista.\n");
+        return;
+    }
+
+    struct compu pc_mas_vieja = pcs[0]; // Asumimos que la primera es la más vieja inicialmente
+    for (int i = 1; i < cantidad; i++) {
+        if (pcs[i].anio < pc_mas_vieja.anio) {
+            pc_mas_vieja = pcs[i]; // Encontramos una PC más vieja
+        }
+    }
+
+    printf("\n--- Computadora más vieja ---\n");
+    printf("  Velocidad: %d GHz\n", pc_mas_vieja.velocidad);
+    printf("  Año: %d\n", pc_mas_vieja.anio);
+    printf("  Cantidad de núcleos: %d\n", pc_mas_vieja.cantidad_nucleos);
+    printf("  Tipo de CPU: %s\n", pc_mas_vieja.tipo_cpu);
+    printf("-----------------------------\n");
+}
 
 int main() {
     srand(time(NULL)); // Inicializar la semilla para números aleatorios
@@ -40,24 +77,8 @@ int main() {
     // Mostrar la lista de PCs
     listarPCs(pcs, CANTIDAD_PCS);
 
+    // Mostrar la PC más vieja
+    mostrarMasVieja(pcs, CANTIDAD_PCS);
+
     return 0;
-}
-
-// Función para generar un entero aleatorio dentro de un rango
-int generar_aleatorio(int min, int max) {
-    
-    return min + rand() % (max - min + 1);
-}
-
-// Función para listar las PCs
-void listarPCs(struct compu pcs[], int cantidad) {
-    printf("--- Lista de Computadoras ---\n");
-    for (int i = 0; i < cantidad; i++) {
-        printf("PC %d:\n", i + 1);
-        printf("  Velocidad: %d GHz\n", pcs[i].velocidad);
-        printf("  Año: %d\n", pcs[i].anio);
-        printf("  Cantidad de núcleos: %d\n", pcs[i].cantidad_nucleos);
-        printf("  Tipo de CPU: %s\n", pcs[i].tipo_cpu);
-        printf("-------------------------\n");
-    }
 }
