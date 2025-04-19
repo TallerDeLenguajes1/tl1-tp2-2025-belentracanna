@@ -54,6 +54,28 @@ void mostrarMasVieja(struct compu pcs[], int cantidad) {
     printf("-----------------------------\n");
 }
 
+// Función para mostrar la PC más veloz
+void mostrarMasVeloz(struct compu pcs[], int cantidad) {
+    if (cantidad == 0) {
+        printf("No hay computadoras en la lista.\n");
+        return;
+    }
+
+    struct compu pc_mas_veloz = pcs[0]; // Asumimos que la primera es la más veloz inicialmente
+    for (int i = 1; i < cantidad; i++) {
+        if (pcs[i].velocidad > pc_mas_veloz.velocidad) {
+            pc_mas_veloz = pcs[i]; // Encontramos una PC más veloz
+        }
+    }
+
+    printf("\n--- Computadora más veloz ---\n");
+    printf("  Velocidad: %d GHz\n", pc_mas_veloz.velocidad);
+    printf("  Año: %d\n", pc_mas_veloz.anio);
+    printf("  Cantidad de núcleos: %d\n", pc_mas_veloz.cantidad_nucleos);
+    printf("  Tipo de CPU: %s\n", pc_mas_veloz.tipo_cpu);
+    printf("-----------------------------\n");
+}
+
 int main() {
     srand(time(NULL)); // Inicializar la semilla para números aleatorios
 
@@ -79,6 +101,9 @@ int main() {
 
     // Mostrar la PC más vieja
     mostrarMasVieja(pcs, CANTIDAD_PCS);
+
+    // Mostrar la PC más veloz
+    mostrarMasVeloz(pcs, CANTIDAD_PCS);
 
     return 0;
 }
